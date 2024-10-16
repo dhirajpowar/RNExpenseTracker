@@ -50,7 +50,7 @@ export default function App() {
           <Stack.Screen name="ManageExpense" component={ManageExpense} />
        
         </Stack.Navigator>
-
+ 
        </NavigationContainer>
     </>
      
