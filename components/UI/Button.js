@@ -33,7 +33,9 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     pressed: {
-        opacity: 0.75
+        opacity: 0.75,
+        backgroundColor: GlobalStyles.colors.primary500,
+        borderRadius: 4
     }
 
 })
