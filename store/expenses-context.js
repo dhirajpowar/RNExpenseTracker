@@ -51,8 +51,8 @@ function expensesReducer(state, action) {
             );
             const updatableExpense = state[updatableExpenseIndex];
             const updateItem = {...updatableExpense, ...action.payload.data};
-            const updatedExpenses = [...state];
-            updatableExpense[updatableExpenseIndex] = updateItem;
+            const updatedExpenses = [...state]; //new state immutable array created
+            updatedExpenses[updatableExpenseIndex] = updateItem;
             return updatedExpenses;
         case 'DELETE':
             return state.filter((expense) => expense.id !== action.payload);
@@ -76,7 +76,14 @@ function ExpensesContextProvider({children}) {
         dispatch({type: 'UPDATE', payload: {id: id, data: expenseData}})
     }
 
-    return <ExpensesContext.Provider>{children}</ExpensesContext.Provider>
+    const value = {
+        expenses: expensesState,
+        addExpense: addExpense,
+        deleteExpense: deleteExpense,
+        updateExpense: updateExpense
+    };
+
+    return <ExpensesContext.Provider value={value}>{children}</ExpensesContext.Provider>
 }
 
 export default ExpensesContextProvider;
